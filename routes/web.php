@@ -12,3 +12,7 @@
 */
 
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
+
+Route::get('/{whatever?}', function() {
+    return 'sorry, man, but we are down now. :/';
+});

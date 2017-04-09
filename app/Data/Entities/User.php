@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Data\Entities;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name',
+        'last_name',
+        'username',
+        'email',
+        'password',
+        'activation_key',
     ];
 
     /**
@@ -24,6 +29,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+    public function getActivationUrlAttribute()
+    {
+        return route('account.activate', ['activation_key' => $this->activation_key]);
+    }
 }

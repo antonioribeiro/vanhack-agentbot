@@ -10,13 +10,12 @@ use Mpociot\BotMan\Question;
 
 class ExampleConversation extends Conversation
 {
-
     /**
      * First question
      */
     public function askReason()
     {
-        $question = Question::create("Huh - you woke me up. What do you need?")
+        $question = Question::create("Hi there! What do you need?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([
@@ -43,5 +42,4 @@ class ExampleConversation extends Conversation
     {
         $this->askReason();
     }
-
 }
